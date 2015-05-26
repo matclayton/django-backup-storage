@@ -1,9 +1,9 @@
 Django Backup Storage
 =====================
 
-This storage backend is heavily inspired by django-queued-storage and allows you specify 
-a local and a remote storage backend. When uploading to the storage system, it will 
-store the file to the local storage engine, then transfer the file to the remote system 
+This storage backend is heavily inspired by django-queued-storage and allows you specify
+a local and a remote storage backend. When uploading to the storage system, it will
+store the file to the local storage engine, then transfer the file to the remote system
 via a queue for backups. This code is used in production at mixcloud.com with the S3Storage
 backend to automagically keep rolling backups of user image uploads.
 
@@ -17,6 +17,6 @@ Installation
 2. Make sure you have a cache backend set up.
 
 3. Add the backend to the storage argument of a FileField
-    
+
     image = ImageField(storage=QueuedBackupStorage(local='django.core.files.storage.FileSystemStorage',
                        remote='backends.s3boto.S3BotoStorage'), upload_to='uploads')
